@@ -15,13 +15,13 @@ const Body = () => {
           element: <Feed />
         },
         {
-          path: "/profile",
+          path: "profile",
           element: <Profile />
         }
       ]
     },
     {
-      path: "/login",
+      path: "login",
       element: <Login />
     }
   ]);
