@@ -5,7 +5,7 @@ import Home from "./Home";
 import Feed from "./Feed";
 
 const Body = () => {
-  const appRouter = createBrowserRouter([
+  const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
@@ -15,20 +15,20 @@ const Body = () => {
           element: <Feed />
         },
         {
-          path: "profile",
+          path: "profile", // Note: remove the leading slash for child routes
           element: <Profile />
         }
       ]
     },
     {
-      path: "login",
+      path: "/login",
       element: <Login />
     }
   ]);
 
   return (
     <div>
-      <RouterProvider router={appRouter} />
+      <RouterProvider router={router} />
     </div>
   );
 };
