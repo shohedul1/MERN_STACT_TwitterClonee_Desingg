@@ -15,7 +15,7 @@ const Body = () => {
           element: <Feed />
         },
         {
-          path: "profile", // Note: remove the leading slash for child routes
+          path: "/profile/:id",
           element: <Profile />
         }
       ]

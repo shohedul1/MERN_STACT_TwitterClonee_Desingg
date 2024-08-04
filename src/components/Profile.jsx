@@ -1,9 +1,16 @@
+
 import React from 'react'
 import Avatar from 'react-avatar'
 import { IoMdArrowBack } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import useGetProfile from '../hooks/useGetProfile'
 
 const Profile = () => {
+  const { user, profile } = useSelector(store => store.user);
+  const { id } = useParams();
+  useGetProfile(id);
+
   return (
     <div className='w-[50%] border-l border-r border-gray-200'>
       <div>
@@ -12,7 +19,7 @@ const Profile = () => {
             <IoMdArrowBack size="24px" />
           </Link>
           <div className='ml-2'>
-            <h1 className='font-bold text-lg'>shohidul pramanik</h1>
+            <h1 className='font-bold text-lg'>{profile?.name}</h1>
             <p className='text-gray-500 text-sm'>10 post</p>
           </div>
         </div>
@@ -21,11 +28,18 @@ const Profile = () => {
           <Avatar src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
         </div>
         <div className='text-right m-4'>
-          <button className='px-4 py-1 bg-black text-white rounded-full'>Follow</button>
+          {
+            profile?._id === user?._id ? (
+              <button className='px-4 py-1 hover:bg-gray-200 rounded-full border border-gray-400'>Edit Profile</button>
+
+            ) : (
+              <button  className='px-4 py-1 bg-black text-white rounded-full'>{user.following.includes(id) ? "Following" : "Follow"}</button>
+            )
+          }
         </div>
         <div className='m-4'>
-          <h1 className='font-bold text-xl'>shohidul pramanik</h1>
-          <p>shohidulpramanik@gmail.com</p>
+          <h1 className='font-bold text-xl'>{profile?.name}</h1>
+          <p>{`@${profile?.username}`}</p>
         </div>
         <div className='m-4 text-sm'>
           <p>🌐 Exploring the web's endless possibilities with MERN Stack 🚀 | Problem solver by day, coder by night 🌙 | Coffee lover ☕ | Join me on this coding journey!</p>
