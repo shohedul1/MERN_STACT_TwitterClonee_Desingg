@@ -2,7 +2,7 @@
 import React from 'react'
 import Avatar from 'react-avatar'
 import { IoMdArrowBack } from 'react-icons/io'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import useGetProfile from '../hooks/useGetProfile'
 

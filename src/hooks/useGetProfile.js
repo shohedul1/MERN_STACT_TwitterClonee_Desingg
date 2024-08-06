@@ -12,7 +12,7 @@ const useGetProfile = (id) => {
                 const res = await axios.get(`${USER_API_END_POINT}/profile/${id}`, {
                     withCredentials: true
                 });
-                console.log(res);
+                console.log('shohidul', res);
                 dispatch(getMyProfile(res.data.user));
             } catch (error) {
                 console.log(error);
